@@ -6,16 +6,16 @@ export default (OriginalComponent) => class ToggleAccordion extends React.Compon
     state = {
         openArticleId: null
     };
-    render(){
+
+    render() {
         return <OriginalComponent
             {...this.props}
-            {...this.state}
-            toggleOpen = {this.toggleOpen}
+            openArticleId={this.state.openArticleId}
+            toggleOpen={this.toggleOpen}
         />
     }
+
     //каррирование + открывание и закрывнаие статьи
     toggleOpen = openArticleId => () =>
-        this.state.openArticleId === openArticleId ?
-            this.setState({openArticleId: null}) :
-            this.setState({openArticleId})
+        this.setState({openArticleId: openArticleId === this.state.openArticleId ? null : openArticleId})
 }

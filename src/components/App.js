@@ -6,18 +6,14 @@ class App extends React.Component {
     static propTypes = {
         articles: PropTypes.arrayOf(
             PropTypes.shape({
-                    id: PropTypes.string.isRequired,
+                    id: PropTypes.string,
                     date: PropTypes.string,
                     title: PropTypes.string,
-                    text: PropTypes.string.isRequired,
-                    comments: PropTypes.shape({
-                        id: PropTypes.string.isRequired,
-                        user: PropTypes.string,
-                        text: PropTypes.string.isRequired
-                    })
+                    text: PropTypes.string,
+                    comments: PropTypes.array
                 }
             )
-        ).isRequired
+        )
     };
 
     render() {

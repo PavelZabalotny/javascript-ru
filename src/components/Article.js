@@ -5,9 +5,9 @@ import CommentList from './CommentList';
 class Article extends React.Component {
     static propTypes = {
         article: PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            date: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
+            id: PropTypes.string,
+            date: PropTypes.string,
+            title: PropTypes.string,
             text: PropTypes.string
         }).isRequired
     };

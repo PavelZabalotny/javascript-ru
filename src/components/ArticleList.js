@@ -1,21 +1,17 @@
 import React from "react";
 import Article from "./Article";
 import PropTypes from "prop-types";
-import ToggleAccordion from "../decorators/toggleAccordeon";
+import toggleAccordion from "../decorators/toggleAccordeon";
 
 class ArticleList extends React.Component {
     static propTypes = {
         articles: PropTypes.arrayOf(
             PropTypes.shape({
-                    id: PropTypes.string.isRequired,
+                    id: PropTypes.string,
                     date: PropTypes.string,
                     title: PropTypes.string,
-                    text: PropTypes.string.isRequired,
-                    comments: PropTypes.shape({
-                        id: PropTypes.string.isRequired,
-                        user: PropTypes.string,
-                        text: PropTypes.string.isRequired
-                    })
+                    text: PropTypes.string,
+                    comments: PropTypes.array
                 }
             )
         ).isRequired
@@ -37,4 +33,4 @@ class ArticleList extends React.Component {
     }
 }
 
-export default ToggleAccordion(ArticleList)
+export default toggleAccordion(ArticleList)
