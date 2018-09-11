@@ -1,18 +1,26 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import CommentList from './CommentList';
 
-class Article extends React.Component {
+class Article extends PureComponent {
     static propTypes = {
         article: PropTypes.shape({
-            id: PropTypes.string,
+            id: PropTypes.string.isRequired,
             date: PropTypes.string,
-            title: PropTypes.string,
+            title: PropTypes.string.isRequired,
             text: PropTypes.string
-        }).isRequired
+        }).isRequired,
+        isOpen: PropTypes.bool.isRequired,
+        toggleOpen: PropTypes.func.isRequired
     };
 
+/*    shouldComponentUpdate(nextProps){
+        return nextProps.isOpen !== this.props.isOpen
+    }*/
+
     render() {
+        console.log('---', 'update article');
+        
         const {article, isOpen, toggleOpen} = this.props;
         return (
             <div>

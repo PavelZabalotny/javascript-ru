@@ -5,16 +5,7 @@ import toggleAccordion from "../decorators/toggleAccordeon";
 
 class ArticleList extends React.Component {
     static propTypes = {
-        articles: PropTypes.arrayOf(
-            PropTypes.shape({
-                    id: PropTypes.string,
-                    date: PropTypes.string,
-                    title: PropTypes.string,
-                    text: PropTypes.string,
-                    comments: PropTypes.array
-                }
-            )
-        ).isRequired
+        articles: PropTypes.array.isRequired
     };
 
     render() {

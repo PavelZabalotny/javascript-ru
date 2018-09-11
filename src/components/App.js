@@ -1,6 +1,7 @@
 import React from 'react';
 import ArticleList from "./ArticleList";
 import PropTypes from 'prop-types';
+import UserForm from "./UserForm";
 
 class App extends React.Component {
     static propTypes = {
@@ -18,7 +19,12 @@ class App extends React.Component {
 
     render() {
         const {articles} = this.props;
-        return (<ArticleList articles={articles}/>)
+        return (
+            <React.Fragment>
+                <UserForm/>
+                <ArticleList articles={articles}/>
+            </React.Fragment>
+        )
     }
 }
 
