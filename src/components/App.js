@@ -2,6 +2,7 @@ import React from 'react';
 import ArticleList from "./ArticleList";
 import PropTypes from 'prop-types';
 import UserForm from "./UserForm";
+import Select from 'react-select';
 
 class App extends React.Component {
     static propTypes = {
@@ -22,6 +23,7 @@ class App extends React.Component {
         return (
             <React.Fragment>
                 <UserForm/>
+                <Select/>
                 <ArticleList articles={articles}/>
             </React.Fragment>
         )

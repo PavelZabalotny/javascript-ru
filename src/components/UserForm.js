@@ -12,7 +12,10 @@ class UserForm extends Component {
         );
     }
 
-    handleUserChange = e => this.setState({username: e.target.value})
+    handleUserChange = e => {
+        if(e.target.value.length > 10) return
+        this.setState({username: e.target.value})
+    }
 }
 
 export default UserForm;
