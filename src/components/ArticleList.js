@@ -1,8 +1,9 @@
 import React from "react";
 import Article from "./Article";
 import PropTypes from "prop-types";
+import ToggleAccordion from "../decorators/toggleAccordeon";
 
-export default class ArticleList extends React.Component {
+class ArticleList extends React.Component {
     static propTypes = {
         articles: PropTypes.arrayOf(
             PropTypes.shape({
@@ -19,18 +20,14 @@ export default class ArticleList extends React.Component {
             )
         ).isRequired
     };
-    state = {
-        openArticleId: null
-    };
 
     render() {
-        const {articles} = this.props;
+        const {articles, toggleOpen, openArticleId} = this.props;
         const articleElements = articles.map(article =>
             <li key={article.id}><Article
                 article={article}
-                isOpen={article.id === this.state.openArticleId}
-                toggleOpen={this.toggleOpen(article.id)}
-
+                isOpen={article.id === openArticleId}
+                toggleOpen={toggleOpen(article.id)}
             /></li>);
         return (
             <ul>
@@ -38,7 +35,6 @@ export default class ArticleList extends React.Component {
             </ul>
         )
     }
+}
 
-    //каррирование
-    toggleOpen = openArticleId => () => this.setState({openArticleId})
-};
+export default ToggleAccordion(ArticleList)
