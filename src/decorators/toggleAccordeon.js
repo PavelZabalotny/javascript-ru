@@ -1,6 +1,6 @@
 import React from 'react';
 
-//декоратор дял Аккордеона
+//декоратор для Аккордеона
 
 export default (OriginalComponent) => class ToggleAccordion extends React.Component {
     state = {
@@ -13,7 +13,7 @@ export default (OriginalComponent) => class ToggleAccordion extends React.Compon
             toggleOpen = {this.toggleOpen}
         />
     }
-    //каррирование
+    //каррирование + открывание и закрывнаие статьи
     toggleOpen = openArticleId => () =>
         this.state.openArticleId === openArticleId ?
             this.setState({openArticleId: null}) :
