@@ -1,7 +1,7 @@
 import React from 'react';
 import Comment from "./Comment";
 import toggleOpen from '../decorators/toggleOpen';
-import Index from './CommentForm/index'
+import CommentForm from './CommentForm/index'
 
 function CommentList({comments = [], isOpen, toggleOpen}) {
     const text = isOpen ? "Hide comments" : "Show comments";
@@ -21,7 +21,7 @@ function getBody({comments, isOpen}) {
     return (
         <ul>
             {comments.map((comment) => <li key={comment.id}><Comment comment={comment}/></li>)}
-            <Index/>
+            <CommentForm/>
         </ul>
     )
 }

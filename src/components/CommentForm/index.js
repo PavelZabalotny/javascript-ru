@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './style.css'
 
-class Index extends Component {
+class CommentForm extends Component {
     state = {
         user: '',
         text: ''
@@ -65,4 +65,4 @@ const limits = {
     }
 };
 
-export default Index;
+export default CommentForm;
