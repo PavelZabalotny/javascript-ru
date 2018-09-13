@@ -30,20 +30,23 @@ class NewComment extends Component {
             </div>
         );
     }
+
     handleUserChange = e => {
-        this.setState({userBackgroundRed: (e.target.value.length < 5 || e.target.value.length > 15) ?
-            'red' :
-            'none'
-    });
-        this.setState({user: e.target.value})
+        this.setState({
+            userBackgroundRed: (e.target.value.length < 5 || e.target.value.length > 15) ?
+                'red' :
+                'none',
+            user: e.target.value
+        });
     };
 
     handleTextChange = e => {
-        this.setState({textBackgroundRed: (e.target.value.length < 20 || e.target.value.length > 50) ?
+        this.setState({
+            textBackgroundRed: (e.target.value.length < 20 || e.target.value.length > 50) ?
                 'red' :
-                'none'
+                'none',
+            text: e.target.value
         });
-        this.setState({text: e.target.value})
     };
 }
 
