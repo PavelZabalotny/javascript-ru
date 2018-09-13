@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import UserForm from "./UserForm";
 import ReactSelect from './ReactSelect';
 import DayPicker from './SelectDayPicker';
+import Counter from './Counter'
 
 class App extends React.Component {
     static propTypes = {
@@ -16,6 +17,7 @@ class App extends React.Component {
             <React.Fragment>
                 <UserForm/>
                 <ReactSelect articles={articles}/>
+                <Counter/>
                 <DayPicker />
                 <ArticleList articles={articles}/>
             </React.Fragment>

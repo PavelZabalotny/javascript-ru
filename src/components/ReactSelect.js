@@ -13,7 +13,6 @@ export default class ReactSelect extends Component {
                 label: article.title
             };
         });
-        console.log(title);
 
         return (
             <div>
