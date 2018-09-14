@@ -1,6 +1,6 @@
 import React from 'react';
 import App from './App';
-import store from '../store';
+import store from '../Store/index';
 import {Provider} from 'react-redux';
 
 function Root(props) {
