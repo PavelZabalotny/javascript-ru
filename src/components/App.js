@@ -12,14 +12,13 @@ class App extends React.Component {
     };
 
     render() {
-        const {articles} = this.props;
         return (
             <React.Fragment>
                 <UserForm/>
-                <ReactSelect articles={articles}/>
+                {/*<ReactSelect />*/}
                 <Counter/>
                 <DayPicker />
-                <ArticleList articles={articles}/>
+                <ArticleList />
             </React.Fragment>
         )
     }

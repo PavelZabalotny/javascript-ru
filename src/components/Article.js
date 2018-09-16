@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import CommentList from './CommentList';
+import {deleteArticle} from '../AC';
 
 class Article extends PureComponent {
     static propTypes = {
@@ -26,10 +28,18 @@ class Article extends PureComponent {
             <div>
                 <h3>{article.title}</h3>
                 <button onClick={toggleOpen}>{isOpen ? "close" : "open"}</button>
+                <button onClick={this.handleDelete}>Delete Article</button>
                 {this.getBody()}
             </div>
         )
     }
+
+    handleDelete = () => {
+        const {deleteArticle, article} = this.props;
+        deleteArticle(article.id);
+        console.log('---', 'Delete Article');
+
+    };
 
     getBody = () => {
         const {article, isOpen} = this.props;
@@ -43,4 +53,5 @@ class Article extends PureComponent {
     };
 }
 
-export default Article
+//первый аргумент null, т.к. из store ничего не нужно доставать
+export default connect(null, {deleteArticle})(Article)

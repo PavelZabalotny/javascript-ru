@@ -3,11 +3,11 @@ import App from './App';
 import store from '../Store/index';
 import {Provider} from 'react-redux';
 
-function Root(props) {
+function Root() {
 
     return (
         <Provider store={store}>
-            <App {...props}/>
+            <App />
         </Provider>
     );
 
