@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Select from 'react-select';
+import {connect} from 'react-redux';
 
-export default class ReactSelect extends Component {
+class ReactSelect extends Component {
     state = {
         selectedOption: null
     };
@@ -27,3 +28,7 @@ export default class ReactSelect extends Component {
     }
     handleChange = selectedOption => this.setState({selectedOption})
 }
+
+export default connect(state => ({
+    articles: state.articles
+}))(ReactSelect);

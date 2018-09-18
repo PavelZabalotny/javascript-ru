@@ -15,7 +15,7 @@ class App extends React.Component {
         return (
             <React.Fragment>
                 <UserForm/>
-                {/*<ReactSelect />*/}
+                <ReactSelect />
                 <Counter/>
                 <DayPicker />
                 <ArticleList />
