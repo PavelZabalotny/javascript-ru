@@ -1,34 +1,47 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import Select from 'react-select';
 import {connect} from 'react-redux';
+import {setSelectArticles} from '../AC/index';
 
 class ReactSelect extends Component {
-    state = {
-        selectedOption: null
+    static propTypes = {
+        //from connect
+        articles: PropTypes.array.isRequired,
+        selected: PropTypes.array,
+        setSelectArticles: PropTypes.func.isRequired
     };
+    // state = {
+    //     selectedOption: null
+    // };
     render() {
-        const {articles} = this.props;
-        const title = articles.map((article) => {
+        const {articles, selected} = this.props;
+        const options = articles.map((article) => {
             return {
-                value: article.title,
+                value: article.id,
                 label: article.title
             };
         });
 
         return (
-            <div>
-                <Select
-                    value={this.state.selectedOption}
-                    onChange={this.handleChange}
-                    options={title}
-                    isMulti
-                />
-            </div>
+            <Select
+                value={selected}
+                onChange={this.handleChange}
+                options={options}
+                isMulti={true}
+            />
         );
     }
-    handleChange = selectedOption => this.setState({selectedOption})
+
+    //handleChange = setSelectArticles => this.setState({setSelectArticles})
+    handleChange = selected => this.props.setSelectArticles(selected)
 }
 
-export default connect(state => ({
-    articles: state.articles
-}))(ReactSelect);
+const mapStateToProps = state => ({
+    articles: state.articles,
+    selected: state.selected
+});
+
+//const mapDispatchToProps =
+
+export default connect(mapStateToProps, {setSelectArticles})(ReactSelect);

@@ -13,11 +13,13 @@ class ArticleList extends React.Component {
     render() {
         const {articles, toggleOpen, openArticleId} = this.props;
         const articleElements = articles.map(article =>
-            <li key={article.id}><Article
-                article={article}
-                isOpen={article.id === openArticleId}
-                toggleOpen={toggleOpen(article.id)}
-            /></li>);
+            <li key={article.id}>
+                <Article
+                    article={article}
+                    isOpen={article.id === openArticleId}
+                    toggleOpen={toggleOpen(article.id)}
+                />
+            </li>);
         return (
             <ul>
                 {articleElements}
