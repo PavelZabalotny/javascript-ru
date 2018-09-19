@@ -38,7 +38,6 @@ class Article extends PureComponent {
         const {deleteArticle, article} = this.props;
         deleteArticle(article.id);
         console.log('---', 'Delete Article');
-
     };
 
     getBody = () => {
@@ -53,5 +52,5 @@ class Article extends PureComponent {
     };
 }
 
-//первый аргумент null, т.к. из store ничего не нужно доставать
+//первый аргумент null, т.к. из Store ничего не нужно доставать
 export default connect(null, {deleteArticle})(Article)

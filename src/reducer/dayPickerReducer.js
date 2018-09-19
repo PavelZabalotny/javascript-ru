@@ -1,23 +1,19 @@
 import {RESET_DAY, SELECT_DAY_PICKER} from '../constants';
 
-const defaultState = {
-    from: null,
-    to: null,
+const defaultFilters = {
+    dateRange: {
+        from: null,
+        to: null,
+    }
 };
 
-export default (state = defaultState, action) => {
+export default (filters = defaultFilters, action) => {
     switch (action.type) {
         case RESET_DAY:
-            return {
-                from: null,
-                to: null,
-            };
+            return {...filters, dateRange: {from: null, to: null}};
         case SELECT_DAY_PICKER:
-            return {
-                from: 122,
-                to: 333,
-            };
+            return {...filters, dateRange: action.payload.dateRange};
         default:
-            return state
+            return filters
     }
 }

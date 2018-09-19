@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 import Select from 'react-select';
 import {connect} from 'react-redux';
-import {setSelectDayPicker} from '../AC/index';
+import {selectReducer} from '../AC/index';
 
 class ReactSelect extends Component {
     static propTypes = {
@@ -40,7 +40,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-    setSelectArticles: setSelectDayPicker
+    setSelectArticles: selectReducer
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReactSelect);

@@ -4,37 +4,22 @@ import DayPicker, {DateUtils} from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import {connect} from 'react-redux';
 import {setSelectDayPicker} from '../AC/index';
+import {resetDayPicker} from '../AC/index';
 
 class Example extends React.Component {
     static defaultProps = {
         numberOfMonths: 1,
     };
-    //  state = {
-    //      from: null,
-    //      to: null,
-    // };
-    // constructor(props) {
-    //     super(props);
-    //     this.state = Example.getInitialState();
-    // }
-
-    // static getInitialState() {
-    //     return {
-    //         from: undefined,
-    //         to: undefined,
-    //     };
-    // }
 
     handleDayClick = (day) => {
-        const range = DateUtils.addDayToRange(day, this.props.selectDayPicker);
-        setSelectDayPicker(range);
+        const {range, setSelectDayPicker} = this.props;
+        setSelectDayPicker(DateUtils.addDayToRange(day, range));
     };
 
-    handleResetClick = () => this.props.resetDayPicker;
+    handleResetClick = () => this.props.resetDayPicker();
 
     render() {
-        console.log('this.props.selectDayPicker.from', this.props.selectDayPicker.from);
-        const {from, to} = this.props.selectDayPicker;
+        const {from, to} = this.props.range;
         const modifiers = {start: from, end: to};
         return (
             <div className="RangeExample">
@@ -52,6 +37,7 @@ class Example extends React.Component {
                         </button>
                     )}
                 </p>
+
                 <DayPicker
                     className="Selectable"
                     numberOfMonths={this.props.numberOfMonths}
@@ -84,7 +70,7 @@ class Example extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    selectDayPicker: state.selectDayPicker
+    range: state.filters.dateRange
 });
 
-export default connect(mapStateToProps, {setSelectArticles: setSelectDayPicker})(Example)
+export default connect(mapStateToProps, {setSelectDayPicker, resetDayPicker})(Example)

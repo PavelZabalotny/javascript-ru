@@ -25,8 +25,9 @@ export function resetDayPicker(){
         type: RESET_DAY
     }
 }
-export function setSelectDayPicker(){
+export function setSelectDayPicker(dateRange){
     return {
-        type: SELECT_DAY_PICKER
+        type: SELECT_DAY_PICKER,
+        payload: { dateRange }
     }
 }
