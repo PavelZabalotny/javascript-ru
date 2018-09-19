@@ -1,4 +1,4 @@
-import {DELETE_ARTICLE, INCREMENT, SET_SELECT_ARTICLES} from '../constants';
+import {DELETE_ARTICLE, INCREMENT, SET_SELECT_ARTICLES, RESET_DAY, SELECT_DAY_PICKER} from '../constants';
 
 export function increment() {
     return {
@@ -13,9 +13,20 @@ export function deleteArticle(id) {
     }
 }
 
-export function setSelectArticles(selected){
+export function selectReducer(selected){
     return {
         type: SET_SELECT_ARTICLES,
         payload: { selected }
+    }
+}
+
+export function resetDayPicker(){
+    return {
+        type: RESET_DAY
+    }
+}
+export function setSelectDayPicker(){
+    return {
+        type: SELECT_DAY_PICKER
     }
 }

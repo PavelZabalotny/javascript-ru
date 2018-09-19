@@ -1,3 +1,5 @@
 export const DELETE_ARTICLE = 'DELETE_ARTICLE';
 export const INCREMENT = 'INCREMENT';
 export const SET_SELECT_ARTICLES = 'SET_SELECT_ARTICLES';
+export const RESET_DAY = 'RESET_DAY';
+export const SELECT_DAY_PICKER = 'SELECT_DAY_PICKER';

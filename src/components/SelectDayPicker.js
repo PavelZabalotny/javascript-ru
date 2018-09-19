@@ -2,37 +2,39 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import DayPicker, {DateUtils} from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
+import {connect} from 'react-redux';
+import {setSelectDayPicker} from '../AC/index';
 
 class Example extends React.Component {
     static defaultProps = {
         numberOfMonths: 1,
     };
+    //  state = {
+    //      from: null,
+    //      to: null,
+    // };
+    // constructor(props) {
+    //     super(props);
+    //     this.state = Example.getInitialState();
+    // }
 
-    constructor(props) {
-        super(props);
-        this.handleDayClick = this.handleDayClick.bind(this);
-        this.handleResetClick = this.handleResetClick.bind(this);
-        this.state = Example.getInitialState();
-    }
+    // static getInitialState() {
+    //     return {
+    //         from: undefined,
+    //         to: undefined,
+    //     };
+    // }
 
-    static getInitialState() {
-        return {
-            from: undefined,
-            to: undefined,
-        };
-    }
+    handleDayClick = (day) => {
+        const range = DateUtils.addDayToRange(day, this.props.selectDayPicker);
+        setSelectDayPicker(range);
+    };
 
-    handleDayClick(day) {
-        const range = DateUtils.addDayToRange(day, this.state);
-        this.setState(range);
-    }
-
-    handleResetClick() {
-        this.setState(Example.getInitialState());
-    }
+    handleResetClick = () => this.props.resetDayPicker;
 
     render() {
-        const {from, to} = this.state;
+        console.log('this.props.selectDayPicker.from', this.props.selectDayPicker.from);
+        const {from, to} = this.props.selectDayPicker;
         const modifiers = {start: from, end: to};
         return (
             <div className="RangeExample">
@@ -81,4 +83,8 @@ class Example extends React.Component {
     }
 }
 
-export default Example
+const mapStateToProps = state => ({
+    selectDayPicker: state.selectDayPicker
+});
+
+export default connect(mapStateToProps, {setSelectArticles: setSelectDayPicker})(Example)
