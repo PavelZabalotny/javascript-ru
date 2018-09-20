@@ -12,8 +12,7 @@ class ArticleList extends React.Component {
 
     render() {
         const {articles, toggleOpen, openArticleId} = this.props;
-        const articleElements = articles.map(article =>
-            <li key={article.id}>
+        const articleElements = articles.map(article => <li key={article.id}>
                 <Article
                     article={article}
                     isOpen={article.id === openArticleId}
@@ -34,8 +33,8 @@ export default connect(({articles, filters}) => {
 
     const filteredArticles = articles.filter(article => {
         const published = Date.parse(article.date);
-        return ((!selected.length || selected.includes(article.id)) &&
-            (!from || !to || (published > from && published < to)))
+        return (!selected.length || selected.includes(article.id)) &&
+            (!from || !to || (published > from && published < to))
     });
 
     return {
