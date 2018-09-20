@@ -1,6 +1,7 @@
-import {RESET_DAY, SELECT_DAY_PICKER} from '../constants';
+import {RESET_DAY, SELECT_DAY_PICKER, SET_SELECT_ARTICLES} from '../constants';
 
 const defaultFilters = {
+    selected: null,
     dateRange: {
         from: null,
         to: null,
@@ -8,11 +9,14 @@ const defaultFilters = {
 };
 
 export default (filters = defaultFilters, action) => {
-    switch (action.type) {
+    const {type, payload} = action;
+    switch (type) {
         case RESET_DAY:
             return {...filters, dateRange: {from: null, to: null}};
         case SELECT_DAY_PICKER:
-            return {...filters, dateRange: action.payload.dateRange};
+            return {...filters, dateRange: payload.dateRange};
+        case SET_SELECT_ARTICLES:
+            return {...filters, selected: payload.selected};
         default:
             return filters
     }

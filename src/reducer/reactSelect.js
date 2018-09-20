@@ -1,3 +1,4 @@
+/*
 import {SET_SELECT_ARTICLES} from '../constants';
 
 export default (selected = null, action) => {
@@ -9,4 +10,4 @@ export default (selected = null, action) => {
         default:
             return selected
     }
-}
+}*/
