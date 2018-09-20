@@ -4,12 +4,13 @@ const defaultFilters = {
     selected: [],
     dateRange: {
         from: null,
-        to: null,
+        to: null
     }
 };
 
 export default (filters = defaultFilters, action) => {
     const {type, payload} = action;
+
     switch (type) {
         case RESET_DAY:
             return {...filters, dateRange: {from: null, to: null}};
