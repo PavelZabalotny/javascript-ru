@@ -9,17 +9,17 @@ class ReactSelect extends Component {
         //from connect
         articles: PropTypes.array.isRequired,
         selected: PropTypes.array,
-        setSelectArticles: PropTypes.func.isRequired
+        selectReducer: PropTypes.func.isRequired
     };
 
     render() {
         const {articles, selected} = this.props;
-        const options = articles.map((article) => {
-            return {
+        console.log('props', this.props);
+        const options = articles.map(article => ({
                 value: article.id,
                 label: article.title
-            };
-        });
+            }
+        ));
 
         return (
             <Select
@@ -31,16 +31,24 @@ class ReactSelect extends Component {
         );
     }
 
-    handleChange = selected => this.props.setSelectArticles(selected)
+    handleChange = selected => {
+        console.log('handleChange(selected)', selected);
+
+        return this.props.selectReducer(selected.map(option => {
+            console.log('option.value', option.value);
+
+            return option.value
+        }))
+    };
 }
 
 const mapStateToProps = state => ({
     articles: state.articles,
-    selected: state.selected
+    selected: state.filters.selected
 });
 
 const mapDispatchToProps = {
-    setSelectArticles: selectReducer
+    selectReducer
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReactSelect);

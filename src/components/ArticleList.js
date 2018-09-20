@@ -12,14 +12,15 @@ class ArticleList extends React.Component {
 
     render() {
         const {articles, toggleOpen, openArticleId} = this.props;
-        const articleElements = articles.map(article =>
-            <li key={article.id}>
+        const articleElements = articles.map(article => {
+            return (<li key={article.id}>
                 <Article
                     article={article}
                     isOpen={article.id === openArticleId}
                     toggleOpen={toggleOpen(article.id)}
                 />
-            </li>);
+            </li>)
+        });
         return (
             <ul>
                 {articleElements}
@@ -28,6 +29,14 @@ class ArticleList extends React.Component {
     }
 }
 
-export default connect(state => ({
-    articles: state.articles
-}))(toggleAccordion(ArticleList))
+export default connect(({articles, filters}) => {
+    const {selected, dateRange: {from, to}} = filters;
+    const filteredArticles = articles.filter(article => {
+        const pablished = Date.parse(article.date);
+        return ((!selected.length || selected.includes(article.id)) && (!from || !to || (pablished >= from && pablished <= to)))
+    });
+
+    return {
+        articles: filteredArticles
+    }
+})(toggleAccordion(ArticleList))

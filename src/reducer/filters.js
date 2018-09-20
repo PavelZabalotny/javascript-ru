@@ -1,7 +1,7 @@
 import {RESET_DAY, SELECT_DAY_PICKER, SET_SELECT_ARTICLES} from '../constants';
 
 const defaultFilters = {
-    selected: null,
+    selected: [],
     dateRange: {
         from: null,
         to: null,

@@ -21,8 +21,6 @@ class Article extends PureComponent {
     }*/
 
     render() {
-        //console.log('---', 'update article');
-        
         const {article, isOpen, toggleOpen} = this.props;
         return (
             <div>
@@ -37,7 +35,6 @@ class Article extends PureComponent {
     handleDelete = () => {
         const {deleteArticle, article} = this.props;
         deleteArticle(article.id);
-        console.log('---', 'Delete Article');
     };
 
     getBody = () => {
@@ -45,7 +42,8 @@ class Article extends PureComponent {
         if (!isOpen) return null;
             return (
                 <section>
-                    {article.text}
+                    <p>Date: {article.date}</p>
+                    <p>{article.text}</p>
                     <CommentList comments={article.comments} />
                 </section>
             )
